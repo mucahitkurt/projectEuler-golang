@@ -1,4 +1,4 @@
-package euler
+package probs
 
 const (
 	one       = "ONE"

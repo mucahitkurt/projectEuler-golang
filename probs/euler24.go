@@ -1,4 +1,4 @@
-package euler
+package probs
 
 func Euler24() string {
 	str := "0123456789"
