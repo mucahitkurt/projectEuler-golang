@@ -13,20 +13,7 @@ const (
 )
 
 func Euler22() int {
-	dat, err := ioutil.ReadFile(fileName)
-	if err != nil {
-		fmt.Printf("Fault:%s", err.Error())
-		os.Exit(1)
-	}
-
-	strFile := string(dat)
-	var strArr []string
-	strArr = strings.Split(strFile, "\",\"")
-
-	strArr[0] = strArr[0][1:]
-	strLast := strArr[len(strArr)-1]
-	strLast = strLast[:len(strLast)-1]
-	strArr[len(strArr)-1] = strLast
+	strArr := ReadFileIntoArray(fileName, "\",\"")
 
 	sort.Strings(strArr)
 
@@ -44,4 +31,23 @@ func calculateValue(str string, i int) int {
 		sumOfPos += int((c - 'A') + 1)
 	}
 	return sumOfPos * i
+}
+
+func ReadFileIntoArray(path string, sep string) []string {
+	dat, err := ioutil.ReadFile(path)
+	if err != nil {
+		fmt.Printf("Fault:%s", err.Error())
+		os.Exit(1)
+	}
+
+	strFile := string(dat)
+	var strArr []string
+	strArr = strings.Split(strFile, sep)
+
+	strArr[0] = strArr[0][1:]
+	strLast := strArr[len(strArr) - 1]
+	strLast = strLast[:len(strLast) - 1]
+	strArr[len(strArr) - 1] = strLast
+
+	return strArr
 }
