@@ -1,5 +1,9 @@
 package probs
 
+import (
+	"math"
+)
+
 func Euler44() int {
 	//pentagonal number Pi = n(3n-1)/2
 	n := 5000
@@ -9,7 +13,11 @@ func Euler44() int {
 		for i := 1; i+distance <= n; i++ {
 			curDif := pentagonals[i + distance] - pentagonals[i]
 			curSum := pentagonals[i + distance] + pentagonals[i]
-			if IsPentagonal(curDif, pentagonals) && IsPentagonal(curSum, pentagonals) {
+			//if IsPentagonal(curDif, pentagonals) && IsPentagonal(curSum, pentagonals) {
+			//	return curDif
+			//}
+
+			if IsPentagonalNum(int64(curDif)) && IsPentagonalNum(int64(curSum)) {
 				return curDif
 			}
 		}
@@ -31,6 +39,15 @@ func IsPentagonal(num int, pentagonals map[int]int) bool {
 		} else {
 			start = mid + 1
 		}
+	}
+
+	return false
+}
+
+func IsPentagonalNum(num int64) bool {
+	pen := (math.Sqrt(float64(24*num + 1)) + 1) / 6
+	if pen == float64(int(pen)) {
+		return true
 	}
 
 	return false

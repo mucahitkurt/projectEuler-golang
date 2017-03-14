@@ -23,11 +23,15 @@ func Euler42() int {
 }
 
 func isTriangleWord(str string) bool {
-	code := findWordCode(str) * 2
-	sqrtCode := math.Sqrt(float64(code))
-	sqrtCodeInt := int(sqrtCode)
+	code := findWordCode(str)
+	return IsTriangleNumber(int64(code))
+}
 
-	if (sqrtCodeInt * (sqrtCodeInt + 1)) == code {
+func IsTriangleNumber(num int64) bool {
+	sqrtCode := math.Sqrt(float64(num * 2))
+	sqrtCodeInt := int64(sqrtCode)
+
+	if ((sqrtCodeInt * (sqrtCodeInt + 1)) / 2) == num {
 		return true
 	}
 
