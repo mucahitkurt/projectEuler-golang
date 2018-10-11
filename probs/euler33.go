@@ -28,7 +28,7 @@ func Euler33() float64 {
 			halfFJ := float64(halfJ)
 
 			if i/j == halfFI/halfFJ {
-				fmt.Println("I:%f J:%f", i,j)
+				fmt.Printf("I:%f J:%f\n", i,j)
 				curiousFractions *= i / j
 			}
 		}
